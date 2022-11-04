@@ -14,7 +14,7 @@
         --color: black;
       }
 
-      .bib {
+      .bib, .bib2{
         --width: calc(var(--bib-size) / 3);
         --height: calc(var(--bib-size) / 3);
         --thickness: calc(var(--width) / 6 );
@@ -82,7 +82,7 @@
         box-sizing: border-box;
       }
 
-      b { /*empty*/
+      .bib > b { /*empty*/
         width: calc(var(--width) * 1px);
         height: calc(var(--height) * 1px);;
         border: 0px solid red;
@@ -93,7 +93,7 @@
         margin: 0;
         display: inline-block;
       }
-      s { /*half*/
+      .bib > s { /*half*/
         width: calc(var(--width) / 2.0 * 1px);
         height: calc(var(--height) * 1px);;
         border: 0px solid red;
@@ -103,13 +103,79 @@
         padding: 0;
         margin: 0;
         display: inline-block;
+      }      
+
+      .wempty, .wuunit, .wdunit {
+        width: calc(var(--width) * 1px);
+        height: calc(var(--width) * 3 / 5 * 1px);
+        position:relative;
+        outline: 0px solid green;
+        overflow:hidden;
+        box-sizing: border-box;
+        display: inline-block;
+      }
+
+      .wuunit::before {
+        content: '';
+        width: calc(var(--width) * 2 / 1.4142 * 1px);
+        height: calc(var(--width) * 2 / 1.4142 * 1px);
+        left: calc((var(--width) - var(--width) / 1.4142) * 1px);
+        top: calc(((var(--width) * 3 / 5 * 2) - var(--width) * 2 / 1.4142) / 2 * 1px);
+        background: black;
+        position: absolute;
+        transform: scaleY(calc(3/5 * 100%)) rotate(45deg);
+        padding: 0;
+        margin: 0;
+      }
+
+      .wuunit::after {
+        content: '';
+        width: calc(var(--width) * 2 / 1.4142 * 1px);
+        height: calc(var(--width) * 2 / 1.4142 * 1px);
+        left: calc((var(--width) - var(--width) / 1.4142) * 1px);
+        top: calc(((var(--width) * 3 / 5 * 2) - var(--width) *2 / 1.4142) / 2 * 1px);
+        background: white;
+        outline: 0px solid red;
+        position: absolute;
+        transform: scaleY(calc(3/5 * 100%)) scaleX(50%) rotate(45deg);
+      }
+
+      .wdunit::before {
+        content: '';
+        width: calc(var(--width) * 2 / 1.4142 * 1px);
+        height: calc(var(--width) * 2 / 1.4142 * 1px);
+        left: calc((var(--width) - var(--width) / 1.4142) * 1px);
+        top: calc((-1 * var(--width) / 1.4142) * 1px);
+        background: black;
+        position: absolute;
+        transform: scaleY(calc(3/5 * 100%)) rotate(45deg);
+        padding: 0;
+        margin: 0;
+      }
+
+      .wdunit::after {
+        content: '';
+        width: calc(var(--width) * 2 / 1.4142 * 1px);
+        height: calc(var(--width) * 2 / 1.4142 * 1px);
+        left: calc((var(--width) - var(--width) / 1.4142) * 1px);
+        top: calc((-1 * var(--width) / 1.4142) * 1px);
+        background: white;
+        outline: 0px solid red;
+        position: absolute;
+        transform: scaleY(calc(3/5 * 100%)) scaleX(50%) rotate(45deg);
       }
 
 
-      
     </style>
   </head>
   <body>
+
+    <div class="bib">
+      <b></b><b></b><b></b><br>
+      <b></b><b></b><b></b><br>
+      <b></b><b></b><b></b><br>
+    </div>
+
     <div class="bib">
       <b></b><u></u><b></b><br>
       <b></b><i></i><b></b><br>
@@ -135,12 +201,14 @@
       <b></b><i></i><b></b><br/>
     </div>
         
+    <br>
+
     <div class="bib">
       <u></u><u></u><u></u><br/>
       <s></s><u></u><u></u><s></s>
       <s></s><i></i><i></i><s></s>
     </div>
-      
+
     <div class="bib">
       <u></u><u></u><u></u></br>
       <u></u><u></u><u></u></br>
@@ -165,6 +233,48 @@
       <u></u><u></u><u></u></br>
     </div>
       
+    <br>
+    
+    <div class="bib2">
+      <div class="wempty"></div><div class="wempty"></div><div class="wempty"></div><br/>
+     <div class="wempty"></div><div class="wuunit"></div><div class="wempty"></div><br/>
+     <div class="wempty"></div><div class="wdunit"></div><div class="wempty"></div><br/>
+     <div class="wempty"></div><div class="wempty"></div><div class="wempty"></div><br/>
+     <div class="wempty"></div><div class="wempty"></div><div class="wempty"></div><br/>
+   </div>
+   
+   <div class="bib2">
+      <div class="wempty"></div><div class="wempty"></div><div class="wempty"></div><br/>
+     <div class="wempty"></div><div class="wuunit"></div><div class="wempty"></div><br/>
+     <div class="wuunit"></div><div class="wdunit"></div><div class="wempty"></div><br/>
+     <div class="wdunit"></div><div class="wempty"></div><div class="wempty"></div><br/>
+     <div class="wempty"></div><div class="wempty"></div><div class="wempty"></div><br/>
+   </div>
+   
+   <div class="bib2">
+      <div class="wempty"></div><div class="wempty"></div><div class="wuunit"></div><br/>
+     <div class="wempty"></div><div class="wuunit"></div><div class="wdunit"></div><br/>
+     <div class="wuunit"></div><div class="wdunit"></div><div class="wempty"></div><br/>
+     <div class="wdunit"></div><div class="wempty"></div><div class="wempty"></div><br/>
+     <div class="wempty"></div><div class="wempty"></div><div class="wempty"></div><br/>
+   </div>
+   
+   <div class="bib2">
+      <div class="wempty"></div><div class="wempty"></div><div class="wuunit"></div><br/>
+     <div class="wempty"></div><div class="wuunit"></div><div class="wdunit"></div><br/>
+     <div class="wuunit"></div><div class="wdunit"></div><div class="wempty"></div><br/>
+     <div class="wdunit"></div><div class="wuunit"></div><div class="wempty"></div><br/>
+     <div class="wempty"></div><div class="wdunit"></div><div class="wempty"></div><br/>
+   </div>
+   
+   <div class="bib2">
+      <div class="wempty"></div><div class="wempty"></div><div class="wuunit"></div><br/>
+     <div class="wempty"></div><div class="wuunit"></div><div class="wdunit"></div><br/>
+     <div class="wuunit"></div><div class="wdunit"></div><div class="wuunit"></div><br/>
+     <div class="wdunit"></div><div class="wuunit"></div><div class="wdunit"></div><br/>
+     <div class="wempty"></div><div class="wdunit"></div><div class="wempty"></div><br/>
+   </div>
+   
 
   </body>
 </html>
