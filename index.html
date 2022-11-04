@@ -9,88 +9,12 @@
       body {
         margin: 10px;
         padding: 0;
-        --width: 30;
-        --height:30;
-        --thickness:5;
+        --scale: 1;
+        --width: calc(30/var(--scale));
+        --height: calc(30/var(--scale));
+        --thickness:calc(5/var(--scale));
         --color: black;
       }
-      .unit {
-        width: calc(var(--width) * 1px);
-        height: calc(var(--height) * 1px);
-        border: 0px solid red;
-        position: relative;
-        overflow: hidden;
-        box-sizing: border-box;
-        padding: 0;
-        margin: 0;
-        display: inline-block;
-      }
-      .unit::after {
-        content: '';
-        width: calc((var(--width) * 1px) / 1.41421);
-        height: calc((var(--width) * 1px) / 1.41421);
-        background: var(--color);
-        position: absolute;
-        left: calc((var(--width)  - var(--width) / 1.41421) / 2.0 * 1px);
-        top: calc(-1 * (var(--width) / 1.41421) / 2.0 * 1px);
-        box-sizing: border-box;
-        transform: rotate(45deg);
-      }
-      .unit::before { 
-        content:'';
-        width: calc(var(--thickness) * 1px);
-        height: calc(var(--height) * 1px);
-        background: var(--color);
-        position: absolute;
-        left: calc((var(--width) - var(--thickness)) / 2.0 * 1px);
-        top: 0px;
-        box-sizing: border-box;
-      }
-      .leg {
-        width: calc(var(--width) * 1px);
-        height: calc(var(--height) * 1px);
-        border: 0px solid red;
-        position: relative;
-        overflow: hidden;
-        box-sizing: border-box;
-        padding: 0;
-        margin: 0;
-        display: inline-block;
-      }
-      .leg::before { 
-        content:'';
-        width: calc(var(--thickness) * 1px);
-        height: calc(var(--height) * 1px);
-        background: var(--color);
-        position: absolute;
-        left: calc((var(--width) - var(--thickness)) / 2.0 * 1px);
-        top: 0px;
-        box-sizing: border-box;
-      }
-
-      .empty {
-        width: calc(var(--width) * 1px);
-        height: calc(var(--height) * 1px);;
-        border: 0px solid red;
-        position: relative;
-        overflow: hidden;
-        box-sizing: border-box;
-        padding: 0;
-        margin: 0;
-        display: inline-block;
-      }
-      .half {
-        width: calc(var(--width) / 2.0 * 1px);
-        height: calc(var(--height) * 1px);;
-        border: 0px solid red;
-        position: relative;
-        overflow: hidden;
-        box-sizing: border-box;
-        padding: 0;
-        margin: 0;
-        display: inline-block;
-      }
-
 
       .bib {
         display: inline-block;
@@ -103,61 +27,145 @@
         line-height: 0px;
         margin: 2px 2px 2px 2px;
       }
+
+      
+      s { }
+
+      .bib > u { /*Unit*/
+        width: calc(var(--width) * 1px);
+        height: calc(var(--height) * 1px);
+        border: 0px solid red;
+        position: relative;
+        overflow: hidden;
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        display: inline-block;
+      }
+      .bib > u::after {
+        content: '';
+        width: calc((var(--width) * 1px) / 1.41421);
+        height: calc((var(--width) * 1px) / 1.41421);
+        background: var(--color);
+        position: absolute;
+        left: calc((var(--width)  - var(--width) / 1.41421) / 2.0 * 1px);
+        top: calc(-1 * (var(--width) / 1.41421) / 2.0 * 1px);
+        box-sizing: border-box;
+        transform: rotate(45deg);
+      }
+      .bib > u:before { 
+        content:'';
+        width: calc(var(--thickness) * 1px);
+        height: calc(var(--height) * 1px);
+        background: var(--color);
+        position: absolute;
+        left: calc((var(--width) - var(--thickness)) / 2.0 * 1px);
+        top: 0px;
+        box-sizing: border-box;
+      }
+      .bib > i { /*Leg*/
+        width: calc(var(--width) * 1px);
+        height: calc(var(--height) * 1px);
+        border: 0px solid red;
+        position: relative;
+        overflow: hidden;
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        display: inline-block;
+      }
+      .bib > i::before { 
+        content:'';
+        width: calc(var(--thickness) * 1px);
+        height: calc(var(--height) * 1px);
+        background: var(--color);
+        position: absolute;
+        left: calc((var(--width) - var(--thickness)) / 2.0 * 1px);
+        top: 0px;
+        box-sizing: border-box;
+      }
+
+      b { /*empty*/
+        width: calc(var(--width) * 1px);
+        height: calc(var(--height) * 1px);;
+        border: 0px solid red;
+        position: relative;
+        overflow: hidden;
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        display: inline-block;
+      }
+      s { /*half*/
+        width: calc(var(--width) / 2.0 * 1px);
+        height: calc(var(--height) * 1px);;
+        border: 0px solid red;
+        position: relative;
+        overflow: hidden;
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        display: inline-block;
+      }
+
+
+      
     </style>
   </head>
   <body>
     <div class="bib">
-      <div class="empty"></div><div class="unit"></div><div class="empty"></div><br>
-      <div class="empty"></div><div class="leg"></div><div class="empty"></div><br>
-      <div class="empty"></div><div class="leg"></div><div class="empty"></div><br>
+      <b></b><u></u><b></b><br>
+      <b></b><i></i><b></b><br>
+      <b></b><i></i><b></b><br>
     </div>
 
+    <j></j>
     <div class="bib">
-      <div class="half"></div><div class="unit"></div><div class="unit"></div><div class="half"></div><br/>
-      <div class="half"></div><div class="leg"></div><div class="leg"></div><div class="half"></div><br/>
-      <div class="half"></div><div class="leg"></div><div class="leg"></div><div class="half"></div><br/>
+      <s></s><u></u><u></u><s></s><br/>
+      <s></s><i></i><i></i><s></s><br/>
+      <s></s><i></i><i></i><s></s><br/>
     </div>
       
     <div class="bib">
-      <div class="unit"></div><div class="unit"></div><div class="unit"></div><br/>
-      <div class="leg"></div><div class="leg"></div><div class="leg"></div><br/>
-      <div class="leg"></div><div class="leg"></div><div class="leg"></div><br/>
+      <u></u><u></u><u></u><br/>
+      <i></i><i></i><i></i><br/>
+      <i></i><i></i><i></i><br/>
     </div>
         
     <div class="bib">
-      <div class="unit"></div><div class="unit"></div><div class="unit"></div><br/>
-      <div class="empty"></div><div class="unit"></div><div class="empty"></div><br/>
-      <div class="empty"></div><div class="leg"></div><div class="empty"></div><br/>
+      <u></u><u></u><u></u><br/>
+      <b></b><u></u><b></b><br/>
+      <b></b><i></i><b></b><br/>
     </div>
         
     <div class="bib">
-      <div class="unit"></div><div class="unit"></div><div class="unit"></div><br/>
-      <div class="half"></div><div class="unit"></div><div class="unit"></div><div class="half"></div>
-      <div class="half"></div><div class="leg"></div><div class="leg"></div><div class="half"></div>
+      <u></u><u></u><u></u><br/>
+      <s></s><u></u><u></u><s></s>
+      <s></s><i></i><i></i><s></s>
     </div>
       
     <div class="bib">
-      <div class="unit"></div><div class="unit"></div><div class="unit"></div></br>
-      <div class="unit"></div><div class="unit"></div><div class="unit"></div></br>
-      <div class="leg"></div><div class="leg"></div><div class="leg"></div></br>
+      <u></u><u></u><u></u></br>
+      <u></u><u></u><u></u></br>
+      <i></i><i></i><i></i></br>
     </div>
       
     <div class="bib">
-      <div class="unit"></div><div class="unit"></div><div class="unit"></div></br>
-      <div class="unit"></div><div class="unit"></div><div class="unit"></div></br>
-      <div class="empty"></div><div class="unit"></div><div class="empty"></div></br>
+      <u></u><u></u><u></u></br>
+      <u></u><u></u><u></u></br>
+      <b></b><u></u><b></b></br>
     </div>
       
     <div class="bib">
-      <div class="unit"></div><div class="unit"></div><div class="unit"></div></br>
-      <div class="unit"></div><div class="unit"></div><div class="unit"></div></br>
-      <div class="half"></div><div class="unit"></div><div class="unit"></div><div class="half"></div>
+      <u></u><u></u><u></u></br>
+      <u></u><u></u><u></u></br>
+      <s></s><u></u><u></u><s></s>
     </div>
       
     <div class="bib">
-      <div class="unit"></div><div class="unit"></div><div class="unit"></div></br>
-      <div class="unit"></div><div class="unit"></div><div class="unit"></div></br>
-      <div class="unit"></div><div class="unit"></div><div class="unit"></div></br>
+      <u></u><u></u><u></u></br>
+      <u></u><u></u><u></u></br>
+      <u></u><u></u><u></u></br>
     </div>
       
 
